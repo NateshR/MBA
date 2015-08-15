@@ -1,0 +1,59 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mba"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.mba.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mba.SettingsActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.mba.StatusActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity android:name="com.mba.DetailsActivity" >
+        </activity>
+
+        <service android:name="com.mba.RefreshService" >
+        </service>
+
+        <provider
+            android:name="com.mba.StatusProvider"
+            android:authorities="com.mba.StatusProvider"
+            android:exported="false" >
+        </provider>
+
+        <receiver android:name="com.mba.BootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.mba.NotificationReceiver" >
+            <intent-filter>
+                <action android:name="com.mba.action.NEW_STAUTSES" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
